@@ -1,0 +1,13 @@
+{
+  "name": "ads-tracker-webapp",
+  "scripts": {
+    "start": "http-server ./public"
+  },
+  "engines": {
+    "node": ">= 12.18.2"
+  },
+  "author": "Krystian Jarmicki",
+  "dependencies": {
+    "http-server": "0.12.3"
+  }
+}
