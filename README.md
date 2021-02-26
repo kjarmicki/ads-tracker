@@ -38,13 +38,13 @@ I presume various track events will have different information associated with t
 image ads can have client's X and Y points associated with the place of the click) and a document database
 seems like a good fit for this case.
 
-I've chosen Express as a web framework because to me it represents a sweet spot between a low-level
-native `http` module and an invasive, do-it-all solutions like NestJS.
+I've chosen Express as the web framework because to me it represents a sweet spot between a low-level
+native `http` module and invasive, do-it-all solutions like NestJS.
 
 ### Code style
 
 I'm not using classes and `this` in objects on purpose. I consider these parts of the language dangerous and
-unnecessary and I only interact with them if an integration with external modules requires it. I found that object-oriented
+unnecessary and I only interact with them if integration with external modules requires it. I found that object-oriented
 design based on composition rather than inheritance can be easily and elegantly expressed without the need for classes.
 
 ### Code architecture
@@ -54,7 +54,7 @@ design based on composition rather than inheritance can be easily and elegantly 
 For the most part, I'm not using `require` directly in my modules, unless the dependency could be copy-pasted into
 my module and it would still make sense. Most of the modules expose creator functions that accept dependencies as arguments.
 This style allows me to easily replace dependencies in various contexts (like testing) and gives me a sense of clear
-boundaries regarding what should be a part of the module and what should not. I'm aware of existence of tools like
+boundaries regarding what should be a part of the module and what should not. I'm aware of the existence of tools like
 Rewire or Proxyquire, but I see no real need for them if I just allow my modules to receive dependencies from the outside.
 
 #### Clean architecture
@@ -69,19 +69,19 @@ but not the other way around (so, for example, routes can use repositories, but 
 
 #### Common modules
 
-Everyting in `backend/src/common` directory is application-agnostic and could be externalized as a separate module
+Everything in `backend/src/common` directory is application-agnostic and could be externalized as a separate module
 to serve multiple other applications.
 
 ### Local development
 
-In order to provide smooth local development experience this application will run without an external instance
-of MongoDB and use in-memory implementation instead. Unless you need persistence that exceed a lifetime of a
+In order to provide a smooth local development experience, this application will run without an external instance
+of MongoDB and use in-memory implementation instead. Unless you need persistence that exceeds a lifetime of a
 single application run, just `npm start` it and you're good to go.
 
 ### Configuration
 
 This application is configured with environment variables. You're encouraged to copy `backend/src/.env.template` into
-`.env` and fill in the blanks for your local setup. Don't worry about accidentally commiting credentials,
+`.env` and fill in the blanks for your local setup. Don't worry about accidentally committing credentials,
 this file is not version controlled.
 
 ### Possible enhancements
